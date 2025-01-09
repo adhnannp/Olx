@@ -1,4 +1,4 @@
-Here’s a sample **README** file for your OLX clone project, including both backend and frontend features such as adding products, viewing products, login, and logout:
+Here’s the updated **README** file with your Git repository URL included:
 
 ---
 
@@ -68,7 +68,7 @@ The project uses modern web technologies including Node.js for the backend and R
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/olx-clone.git
+   git clone https://github.com/adhnannp/Olx.git
    cd olx-clone/backend
    ```
 
@@ -101,7 +101,7 @@ The project uses modern web technologies including Node.js for the backend and R
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/olx-clone.git
+   git clone https://github.com/adhnannp/Olx.git
    cd olx-clone/frontend
    ```
 
@@ -156,8 +156,6 @@ The project uses modern web technologies including Node.js for the backend and R
 
 - `GET /api/products`: Get all products.
 - `POST /api/products`: Add a new product (requires authentication).
-- `PUT /api/products/:id`: Edit a product (requires authentication).
-- `DELETE /api/products/:id`: Delete a product (requires authentication).
 - `GET /api/products/:id`: Get a single product by ID.
 
 ## Contributing
@@ -165,3 +163,5 @@ The project uses modern web technologies including Node.js for the backend and R
 If you would like to contribute to this project, feel free to fork the repository, create a new branch, and submit a pull request.
 
 ---
+
+Let me know if you need any further modifications!
