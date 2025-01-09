@@ -6,24 +6,23 @@ const generateToken = (userId) => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ message: "User already exists" });
+    if (userExists)
+      return res.status(400).json({ message: "User already exists" });
 
     const user = await User.create({ username, email, password });
     const token = generateToken(user._id);
 
     res.status(201).json({ token, user: { id: user._id, username, email } });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
-
 
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -32,10 +31,13 @@ exports.loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    if (password !== user.password) return res.status(401).json({ message: "Invalid credentials" });
+    if (password !== user.password)
+      return res.status(401).json({ message: "Invalid credentials" });
 
     const token = generateToken(user._id);
-    res.status(200).json({ token, user: { id: user._id, username: user.username, email } });
+    res
+      .status(200)
+      .json({ token, user: { id: user._id, username: user.username, email } });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -69,24 +71,24 @@ exports.addProduct = async (req, res) => {
   }
 };
 
-exports.listProduct = async (req,res)=>{
+exports.listProduct = async (req, res) => {
   try {
-    const product = await Product.find()
-    res.status(200).json(product)
+    const product = await Product.find();
+    res.status(200).json(product);
   } catch (error) {
-    res.status(500).json({massage:'Failed to fetch Products'})
+    res.status(500).json({ massage: "Failed to fetch Products" });
   }
-}
+};
 
 exports.getProduct = async (req, res) => {
   try {
-    const productId = req.params.id; 
-    const product = await Product.findById(productId); 
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
-    res.status(200).json(product); 
+    res.status(200).json(product);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch Product' });
+    res.status(500).json({ message: "Failed to fetch Product" });
   }
 };

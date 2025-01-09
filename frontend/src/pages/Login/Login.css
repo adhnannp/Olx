@@ -1,111 +1,111 @@
 .login {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    max-height: 550px;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    height: 100vh;
-    margin: 4% auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  max-height: 550px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  height: 100vh;
+  margin: 4% auto;
+}
+
+.login-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.login-form h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #ff5722;
+  color: white;
+  font-size: 16px;
+}
+
+.login-form button:hover {
+  background: #e64a19;
+}
+
+.form-switch {
+  margin-top: 15px;
+}
+
+.form-switch p {
+  font-size: 14px;
+  color: #555;
+}
+
+.form-switch span {
+  color: #ff5722;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.form-switch span:hover {
+  color: #e64a19;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .login {
+    margin: 20px auto;
   }
-  
-  .login-logo {
-    width: 150px;
-    margin-bottom: 20px;
-  }
-  
+
   .login-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #222;
+    font-size: 20px;
   }
-  
+
   .login-form input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  .login-form button {
-    width: 100%;
-    padding: 12px;
-    background: #ff5722;
-    color: white;
-    font-size: 16px;
-  }
-  
-  .login-form button:hover {
-    background: #e64a19;
-  }
-  
-  .form-switch {
-    margin-top: 15px;
-  }
-  
-  .form-switch p {
+    padding: 10px;
     font-size: 14px;
-    color: #555;
   }
-  
-  .form-switch span {
-    color: #ff5722;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
+}
+
+@media screen and (max-width: 480px) {
+  .login {
+    padding: 10px;
   }
-  
-  .form-switch span:hover {
-    color: #e64a19;
+
+  .login-form h1 {
+    font-size: 18px;
   }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 768px) {
-    .login {
-      margin: 20px auto;
-    }
-  
-    .login-form h1 {
-      font-size: 20px;
-    }
-  
-    .login-form input {
-      padding: 10px;
-      font-size: 14px;
-    }
+
+  .login-form input {
+    padding: 8px;
+    font-size: 12px;
   }
-  
-  @media screen and (max-width: 480px) {
-    .login {
-      padding: 10px;
-    }
-  
-    .login-form h1 {
-      font-size: 18px;
-    }
-  
-    .login-form input {
-      padding: 8px;
-      font-size: 12px;
-    }
-  }
+}
 .login-spinner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .login-spinner img {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }

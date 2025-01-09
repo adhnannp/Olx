@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import './Home.css';
-import Header from '../../components/Header/Header';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import Footer from '../../components/Footer/Footer';
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "./Home.css";
+import Header from "../../components/Header/Header";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Footer from "../../components/Footer/Footer";
 import loading_gif from "../../assets/loading.gif";
 
 const Home = () => {
@@ -11,11 +11,10 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [showLoadingGif, setShowLoadingGif] = useState(true);
 
-  // Fetch products from the backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/products');
+        const response = await fetch("http://localhost:5000/products");
         const data = await response.json();
 
         if (Array.isArray(data)) {
@@ -33,7 +32,6 @@ const Home = () => {
 
     fetchProducts();
 
-    // Ensure the loading GIF shows for at least 3 seconds
     setTimeout(() => {
       setShowLoadingGif(false);
     }, 1500);
@@ -58,8 +56,8 @@ const Home = () => {
             {products.map((product) => (
               <ProductCard
                 key={product._id}
-                productId={product._id} //
-                image={product.imageUrl} // Dynamically render image from backend
+                productId={product._id}
+                image={product.imageUrl}
                 price={product.price}
                 title={product.title}
                 location={product.location}

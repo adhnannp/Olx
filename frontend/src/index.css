@@ -10,6 +10,6 @@ body {
   color: #333;
 }
 a {
-  text-decoration: none;   /* Remove underline */
-  color: inherit;          /* Inherit color from parent */
+  text-decoration: none;
+  color: inherit;
 }

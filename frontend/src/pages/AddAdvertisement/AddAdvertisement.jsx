@@ -3,7 +3,7 @@ import { ArrowLeft, Camera, MapPin } from "lucide-react";
 import "./AddAdvertisement.css";
 import { useNavigate } from "react-router-dom";
 import loading_gif from "../../assets/loading.gif";
-import {ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
+import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
 
 const AddAdvertisement = () => {
   const navigate = useNavigate();
@@ -65,7 +65,9 @@ const AddAdvertisement = () => {
       return;
     }
     if (formData.price <= 0 || isNaN(formData.price)) {
-      toast.error("Price must be a positive number and cannot be zero or negative!");
+      toast.error(
+        "Price must be a positive number and cannot be zero or negative!"
+      );
       setLoading(false);
       return;
     }

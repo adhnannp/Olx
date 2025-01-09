@@ -1,9 +1,9 @@
-import React, { useContext, useState,useEffect } from 'react'
-import './Login.css'
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import olxLogo from '../../assets/olx-seeklogo.svg';
+import React, { useContext, useState, useEffect } from "react";
+import "./Login.css";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import olxLogo from "../../assets/olx-seeklogo.svg";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -43,17 +43,17 @@ const Login = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, email, password })
+        const response = await fetch("http://localhost:5000/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
         });
 
         const data = await response.json();
         if (data.token) {
-          localStorage.setItem('token', data.token);
-          login()
-          navigate('/')
+          localStorage.setItem("token", data.token);
+          login();
+          navigate("/");
         } else {
           toast.error(data.message);
         }
@@ -71,17 +71,17 @@ const Login = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+        const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
         });
 
         const data = await response.json();
         if (data.token) {
-          localStorage.setItem('token', data.token);
-          login()
-          navigate('/')
+          localStorage.setItem("token", data.token);
+          login();
+          navigate("/");
         } else {
           toast.error(data.message);
         }
@@ -92,43 +92,49 @@ const Login = () => {
   };
 
   return (
-    <div className='login'>
+    <div className="login">
       <img src={olxLogo} alt="OLX Logo" className="login-logo" />
       <div className="login-form">
         <h1>{signState}</h1>
         <form onSubmit={user_auth}>
-          {signState === 'Sign Up' && (
+          {signState === "Sign Up" && (
             <input
               value={username}
               onChange={(e) => setUserName(e.target.value)}
               type="text"
-              placeholder='Your name'
+              placeholder="Your name"
             />
           )}
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder='Email'
+            placeholder="Email"
           />
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            placeholder='Password'
+            placeholder="Password"
           />
-          <button type='submit'>{signState}</button>
+          <button type="submit">{signState}</button>
         </form>
         <div className="form-switch">
-          {signState === 'Sign In' ? (
-            <p>New to OLX? <span onClick={() => setSignState('Sign Up')}>Sign Up Now</span></p>
+          {signState === "Sign In" ? (
+            <p>
+              New to OLX?{" "}
+              <span onClick={() => setSignState("Sign Up")}>Sign Up Now</span>
+            </p>
           ) : (
-            <p>Already have an account? <span onClick={() => setSignState('Sign In')}>Sign In Now</span></p>
+            <p>
+              Already have an account?{" "}
+              <span onClick={() => setSignState("Sign In")}>Sign In Now</span>
+            </p>
           )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

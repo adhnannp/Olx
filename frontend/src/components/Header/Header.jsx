@@ -1,15 +1,11 @@
-import { useNavigate, Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext'; // Adjust the path as per your file structure
-import {
-  SearchIcon,
-  HeartIcon,
-  PlusIcon
-} from '../../components/Icons/Icons';
-import './Header.css';
+import { useNavigate, Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { SearchIcon, HeartIcon, PlusIcon } from "../../components/Icons/Icons";
+import "./Header.css";
 
 const Header = () => {
-  const { loginState, logout, login } = useContext(AuthContext); // Access loginState and logout from context
+  const { loginState, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleAuthAction = () => {
@@ -17,9 +13,16 @@ const Header = () => {
       logout();
       localStorage.clear();
       sessionStorage.clear();
-      navigate('/login');
     } else {
-      navigate('/login');
+      navigate("/login");
+    }
+  };
+
+  const handleSellClick = () => {
+    if (!loginState) {
+      navigate("/login");
+    } else {
+      navigate("/add-advertisement");
     }
   };
 
@@ -37,21 +40,21 @@ const Header = () => {
       </div>
       <div className="search-bar">
         <input type="text" placeholder="" />
-        <span className="search-icon"><SearchIcon /></span>
+        <span className="search-icon">
+          <SearchIcon />
+        </span>
       </div>
       <div className="nav-right">
-        <button className="icon-button"><HeartIcon /></button>
-        <button className="login-button" onClick={handleAuthAction}>
-          {loginState ? 'Logout' : 'Login'}
+        <button className="icon-button">
+          <HeartIcon />
         </button>
-        {loginState && (
-          <Link to="/add-advertisement">
-            <button className="sell-button">
-              <PlusIcon />
-              <span>SELL</span>
-            </button>
-          </Link>
-        )}
+        <button className="login-button" onClick={handleAuthAction}>
+          {loginState ? "Logout" : "Login"}
+        </button>
+        <button className="sell-button" onClick={handleSellClick}>
+          <PlusIcon />
+          <span>SELL</span>
+        </button>
       </div>
     </nav>
   );

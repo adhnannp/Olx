@@ -1,34 +1,36 @@
-import React, { useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import Login from './pages/Login/Login'
-import Product from './pages/Product/Product'
-import AddAdvertisement from './pages/AddAdvertisement/AddAdvertisement'
-import './index.css'
-import { ToastContainer, toast } from 'react-toastify';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Product from "./pages/Product/Product";
+import AddAdvertisement from "./pages/AddAdvertisement/AddAdvertisement";
+import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./context/ProtectedRoute";
+import PublicRoute from "./context/PublicRoute";
 
 const App = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      console.log('Logged In');
-      navigate('/');
-    } else {
-      console.log('Logged Out');
-      navigate('/login');
-    }
-  }, []);
-
   return (
     <div>
-      <ToastContainer theme='dark' />
+      <ToastContainer theme="dark" />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='/add-advertisement' element={<AddAdvertisement />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route
+          path="/add-advertisement"
+          element={
+            <ProtectedRoute>
+              <AddAdvertisement />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
